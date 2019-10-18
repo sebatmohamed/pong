@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Pong</title>
-	</head>
-	<body>
-		<div class="game-wrapper">
-			<h1>Pong!</h1>
-			<div id="game"></div>
-			<!-- Rough-out your SVG mark-up here to start... -->
-		</div>
-		<script type="text/javascript" src="./src/index.js"></script>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pong</title>
+  </head>
+  <body> 
+    <div class="game-wrapper">
+      <h1 id="name"></h1>
+      <div id="court"></div>
+      <div id="game"></div>
+    </div>
+    <h1 id="winner"></h1>
+    <h1 id="end"></h1>
+    <audio id="music">
+      <source src="/public/sounds/Toronto Raptors Arena Sounds.wav">
+    </audio>
+    <script type="text/javascript" src="./src/index.js"></script>
+  </body>
 </html>
+
