@@ -13,8 +13,9 @@ export default class Game {
 
     this.gameElement = document.getElementById(this.element);
 
+
     // creates a new instance of board. height and width passed through from Game object
-    this.board = new Board(this.width, this.height);
+    this.board = new Board(this.width, this.height)
 
     this.paddleWidth = 8;
     this.paddleHeight = 56;
@@ -23,13 +24,11 @@ export default class Game {
     // create ball
 
     
-    this.ball = new Ball(10, this.width, this.height, 'red')
+    this.ball = new Ball(10, this.width, this.height, 'white')
 
     setTimeout(function(){
       this.newball = new Ball(10, this.width, this.height, 'white')
-    }, 1000)
-  
-
+    }, 2000)
     // this.ball2 = new Ball(10, this.width, this.height, 'white')
     
    // create player1 paddle
@@ -64,19 +63,25 @@ export default class Game {
           this.player1.speed = 10
           this.player2.speed = 10
           document.getElementById('music').play()
+          startGame.innerText = ""
+          setTimeout((end) => {
+            document.getElementById('end').innerHTML = "GAME OVER! BETTER LUCK NEXT TIME"
+            this.gameOn = true
+          }, 77000)
+          document.getElementById("game").style.width = "512px"
+          document.getElementById("game").style.height = "256px"
           break
       }
     })
     const name = document.getElementById("name")
     name.innerText = "Toronto Raptors PONG!"
 
-    const startGame = document.getElementById("game")
+    const startGame = document.getElementById("start")
     startGame.innerText = "PRESS SPACE FOR TIP OFF"
 
-    setTimeout((end) => {
-      document.getElementById('end').innerText = "GAME OVER"
-      this.gameOn = true
-    }, 70200);
+    setTimeout((refresh) => {
+      location.reload(true)
+    }, 80000);
   }
 
   render() {
@@ -87,13 +92,13 @@ export default class Game {
     return
     }
 
-    if(this.player1.score === 5) {
+    if(this.player1.score === 15) {
       document.getElementById('winner')
       winner.innerText = "PLAYER 1 WINS!"
       return
     } 
     
-    if(this.player2.score === 5) {
+    if(this.player2.score === 15) {
       document.getElementById('winner')
       winner.innerText = "PLAYER 2 WINS!"
       return

@@ -93,11 +93,13 @@ h1 {
 p {
   text-align: center;
 }
+
 #game {
+  background-image: url(https://pbs.twimg.com/media/CLiSlerUwAA0ptr.jpg:large);
+  background-size: cover;
+}
+
+#start {
   text-align: center;
   font-size: 25px;
-}
-#court {
-  background: url(https://cdn-s3.si.com/s3fs-public/images/Toronto-Raptors-Air-Canada-Centre-floor.jpg);
-  background-size: cover;
 }
