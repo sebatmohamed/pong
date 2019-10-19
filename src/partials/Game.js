@@ -64,12 +64,15 @@ export default class Game {
           this.player2.speed = 10
           document.getElementById('music').play()
           startGame.innerText = ""
-          setTimeout((end) => {
+          setTimeout(() => {
             document.getElementById('end').innerHTML = "GAME OVER! BETTER LUCK NEXT TIME"
             this.gameOn = true
-          }, 77000)
-          document.getElementById("game").style.width = "512px"
-          document.getElementById("game").style.height = "256px"
+          }, 77500)
+          document.getElementById("game").style.width = "768px"
+          document.getElementById("game").style.height = "384px"
+          setTimeout((refresh) => {
+            location.reload(true)
+          }, 82000);
           break
       }
     })
@@ -77,11 +80,7 @@ export default class Game {
     name.innerText = "Toronto Raptors PONG!"
 
     const startGame = document.getElementById("start")
-    startGame.innerText = "PRESS SPACE FOR TIP OFF"
-
-    setTimeout((refresh) => {
-      location.reload(true)
-    }, 80000);
+    startGame.innerText = "PRESS SPACE FOR TIP OFF" 
   }
 
   render() {
@@ -94,13 +93,13 @@ export default class Game {
 
     if(this.player1.score === 15) {
       document.getElementById('winner')
-      winner.innerText = "PLAYER 1 WINS!"
+      winner.innerText = "SUCKER! PLAYER 1 WINS!"
       return
     } 
     
     if(this.player2.score === 15) {
       document.getElementById('winner')
-      winner.innerText = "PLAYER 2 WINS!"
+      winner.innerText = "SUCKER! PLAYER 2 WINS!"
       return
     }
 
