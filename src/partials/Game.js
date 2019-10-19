@@ -22,9 +22,7 @@ export default class Game {
     this.boardGap = 10;
 
     // create ball
-
-    
-    this.ball = new Ball(10, this.width, this.height, 'white')
+    this.ball = new Ball(10, this.width, this.height, '#CF5300')
 
     setTimeout(function(){
       this.newball = new Ball(10, this.width, this.height, 'white')
@@ -64,7 +62,7 @@ export default class Game {
           this.player2.speed = 10
           document.getElementById('music').play()
           startGame.innerText = ""
-          setTimeout(() => {
+          setTimeout((end) => {
             document.getElementById('end').innerHTML = "GAME OVER! BETTER LUCK NEXT TIME"
             this.gameOn = true
           }, 77500)
@@ -72,7 +70,7 @@ export default class Game {
           document.getElementById("game").style.height = "384px"
           setTimeout((refresh) => {
             location.reload(true)
-          }, 82000);
+          }, 80000);
           break
       }
     })

@@ -77,6 +77,7 @@ export default class Ball {
         circle.setAttributeNS(null, 'cx', this.x)
         circle.setAttributeNS(null, 'cy', this.y)
         circle.setAttributeNS(null, 'fill', this.color)
+        circle.setAttributeNS(null, 'stroke', "#f6eddc")
         svg.appendChild(circle)
 
         const rightGoal = this.x + this.radius >= this.boardWidth

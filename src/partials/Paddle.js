@@ -1,4 +1,5 @@
 import { SVG_NS } from '../settings'
+import { setInterval } from 'timers'
 
 export default class Paddle {
   constructor(boardHeight, width, height, x, y, up, down) {
@@ -7,22 +8,35 @@ export default class Paddle {
     this.height = height
     this.x = x
     this.y = y
-    this.speed = 30
+    this.speed = 10
     this.score = 0
+    this.interval = 50
 
-    document.addEventListener('keydown', event => {
+
+      document.addEventListener('keydown', event => {
         console.log(event)
         switch(event.key) {
             case up:
-                this.up()
+                this.startUp()
                 break
             case down:
-                this.down()
+                this.startDown()
                 break
         }
     })
   }
 
+  startUp() {
+    this.paddle = setInterval(() => {
+      this.up()
+    }, this.interval)
+  }
+
+  startDown() {
+    this.paddle = setInterval(() => {
+      this.down()
+    }, this.interval)
+  }  
   up() {
     this.y = Math.max(0, this.y - this.speed)
     }
