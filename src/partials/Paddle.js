@@ -1,5 +1,4 @@
 import { SVG_NS } from "../settings";
-import { setInterval } from "timers";
 
 export default class Paddle {
   constructor(boardHeight, width, height, x, y, up, down) {
@@ -8,9 +7,11 @@ export default class Paddle {
     this.height = height;
     this.x = x;
     this.y = y;
-    this.speed = 10;
+    this.speed = 30;
     this.score = 0;
     this.interval = 30;
+    this.movingUp = null
+    this.movingDown = null
 
     document.addEventListener("keydown", event => {
       console.log(event);
@@ -38,24 +39,32 @@ export default class Paddle {
   }
 
   startUp() {
-    this.paddle = setInterval(() => {
-      this.up();
-    }, this.interval);
+    if (this.movingUp === null) {
+      this.movingUp = setInterval(() => {
+        this.up();
+      }, this.interval);
+      console.log(this.movingUp);
+    }
   }
 
   startDown() {
-    this.paddle = setInterval(() => {
-      this.down();
-    }, this.interval);
+    if (this.movingDown === null) {
+      this.movingDown = setInterval(() => {
+        this.down();
+      }, this.interval);
+      console.log(this.movingDown);
+    }
   }
 
   stopUp() {
-    clearInterval(this.startUp)
-    }
+    clearInterval(this.movingUp);
+    this.movingUp = null
+  }
 
   stopDown() {
-    clearInterval(this.startDown) 
-    }
+    clearInterval(this.movingDown);
+    this.movingDown = null
+  }
 
   up() {
     this.y = Math.max(0, this.y - this.speed);
@@ -74,13 +83,13 @@ export default class Paddle {
   }
 
   render(svg) {
-    let rect = document.createElementNS(SVG_NS, "rect");
+    let paddlerect = document.createElementNS(SVG_NS, "rect");
 
-    rect.setAttributeNS(null, "fill", "white");
-    rect.setAttributeNS(null, "x", this.x);
-    rect.setAttributeNS(null, "y", this.y);
-    rect.setAttributeNS(null, "width", this.width);
-    rect.setAttributeNS(null, "height", this.height);
-    svg.appendChild(rect);
+    paddlerect.setAttributeNS(null, "fill", "white");
+    paddlerect.setAttributeNS(null, "x", this.x);
+    paddlerect.setAttributeNS(null, "y", this.y);
+    paddlerect.setAttributeNS(null, "width", this.width);
+    paddlerect.setAttributeNS(null, "height", this.height);
+    svg.appendChild(paddlerect);
   }
 }
