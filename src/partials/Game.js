@@ -23,6 +23,7 @@ export default class Game {
     // create ball
     this.ball = new Ball(10, this.width, this.height, "#CF5300");
     this.ball2 = new Ball(10, this.width, this.height, "#CF5300")
+    this.ball3 = new Ball(10, this.width, this.height, "#CF5300")
 
     // create player1 paddle
     this.player1 = new Paddle(
@@ -113,6 +114,7 @@ export default class Game {
 
     this.ball.render(svg, this.player1, this.player2);
     this.ball2.render(svg, this.player1, this.player2);
+    this.ball3.render(svg, this.player1, this.player3)
     
 
     this.score1.render(svg, this.player1.score);
