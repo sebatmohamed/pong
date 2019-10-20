@@ -22,6 +22,8 @@ export default class Game {
 
     // create ball
     this.ball = new Ball(10, this.width, this.height, "#CF5300");
+    this.ball2 = new Ball(10, this.width, this.height, "#CF5300")
+
 
     // create player1 paddle
     this.player1 = new Paddle(
@@ -45,31 +47,37 @@ export default class Game {
       KEYS.down
     );
 
+    // creates a score label
     this.score1 = new Score(this.width / 2 - 50, 30, 30);
     this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
     document.addEventListener("keydown", event => {
       switch (event.key) {
         case KEYS.spacebar:
+          startGame.innerText = "";
           this.gameOn = !this.gameOn;
           this.player1.speed = 10;
           this.player2.speed = 10;
           document.getElementById("music").play();
-          startGame.innerText = "";
+
           setTimeout(end => {
             document.getElementById("end").innerHTML =
               "GAME OVER! BETTER LUCK NEXT TIME";
             this.gameOn = true;
-          }, 77500);
+          }, 77300);
+
           document.getElementById("game").style.width = "768px";
           document.getElementById("game").style.height = "384px";
+
           setTimeout(refresh => {
             location.reload(true);
           }, 80000);
-          document.getElementById("new-game").innerHTML = "PRESS 'N' FOR NEW GAME"
+
+          document.getElementById("new-game").innerHTML =
+            "PRESS 'N' FOR NEW GAME";
           break;
         case KEYS.n:
-          location.reload(true)
+          location.reload(true);
       }
     });
 
@@ -79,6 +87,29 @@ export default class Game {
     const startGame = document.getElementById("start");
     startGame.innerText = "PRESS SPACE FOR TIP OFF";
   }
+
+  // newBall() {
+  //   this.newball = new Ball(10, this.width, this.height, "#CF5300");
+  // }
+
+  // newBall() {
+  //   this.newball = setTimeout(() => {
+  //     this.ball();
+  //   }, 3000);
+  // }
+
+  // newBall() {
+  //   setTimeout(function() {
+  //     this.newBall = new Ball(10, this.width, this.height, "red")
+  //   }, 3000);
+
+
+    // const newBall = setTimeout(newBall, 3000)
+    // if(newBall) {
+    //   this.ball = new Ball(10, this.width, this.height, "red")
+    // } else {
+    //   this.ball = new Ball(10, this.width, this.height, "#CF5300")
+    // }
 
   render() {
     if (this.gameOn) {
@@ -92,7 +123,7 @@ export default class Game {
       winner.innerText = "SUCKER! PLAYER 1 WINS!";
       setTimeout(refresh => {
         location.reload(true);
-      }, 3000)
+      }, 3000);
       return;
     }
 
@@ -101,7 +132,7 @@ export default class Game {
       winner.innerText = "SUCKER! PLAYER 2 WINS!";
       setTimeout(refresh => {
         location.reload(true);
-      }, 3000)
+      }, 3000);
       return;
     }
 
@@ -119,7 +150,7 @@ export default class Game {
     this.player2.render(svg);
 
     this.ball.render(svg, this.player1, this.player2);
-
+    this.ball2.rener(svg, this.player1, this.player2)
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
   }
