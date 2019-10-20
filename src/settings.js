@@ -5,5 +5,6 @@ export const KEYS = {
     z: 'z',
     up: 'ArrowUp',
     down: 'ArrowDown',
-    spacebar: ' '
+    spacebar: ' ',
+    n: 'n'
 }

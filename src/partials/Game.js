@@ -22,8 +22,6 @@ export default class Game {
 
     // create ball
     this.ball = new Ball(10, this.width, this.height, "#CF5300");
-    this.ball2 = new Ball(10, this.width, this.height, "#CF5300")
-    this.ball3 = new Ball(10, this.width, this.height, "#CF5300")
 
     // create player1 paddle
     this.player1 = new Paddle(
@@ -68,9 +66,13 @@ export default class Game {
           setTimeout(refresh => {
             location.reload(true);
           }, 80000);
+          document.getElementById("new-game").innerHTML = "PRESS 'N' FOR NEW GAME"
           break;
+        case KEYS.n:
+          location.reload(true)
       }
     });
+
     const name = document.getElementById("name");
     name.innerText = "Toronto Raptors PONG!";
 
@@ -85,17 +87,21 @@ export default class Game {
       return;
     }
 
-    if (this.player1.score === 15) {
+    if (this.player1.score === 10) {
       document.getElementById("winner");
       winner.innerText = "SUCKER! PLAYER 1 WINS!";
-      location.reload(true)
+      setTimeout(refresh => {
+        location.reload(true);
+      }, 3000)
       return;
     }
 
-    if (this.player2.score === 15) {
+    if (this.player2.score === 10) {
       document.getElementById("winner");
       winner.innerText = "SUCKER! PLAYER 2 WINS!";
-      location.reload(true)
+      setTimeout(refresh => {
+        location.reload(true);
+      }, 3000)
       return;
     }
 
@@ -113,9 +119,6 @@ export default class Game {
     this.player2.render(svg);
 
     this.ball.render(svg, this.player1, this.player2);
-    this.ball2.render(svg, this.player1, this.player2);
-    this.ball3.render(svg, this.player1, this.player3)
-    
 
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
