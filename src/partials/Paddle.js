@@ -1,15 +1,17 @@
 import { SVG_NS } from "../settings";
 
 export default class Paddle {
-  constructor(boardHeight, width, height, x, y, up, down) {
+  constructor(boardHeight, width, height, x, y, up, down, color, border) {
     this.boardHeight = boardHeight;
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
+    this.color = color
+    this.border = border
     this.speed = 30;
     this.score = 0;
-    this.interval = 30;
+    this.interval = 15;
     this.movingUp = null
     this.movingDown = null
 
@@ -85,7 +87,8 @@ export default class Paddle {
   render(svg) {
     let paddlerect = document.createElementNS(SVG_NS, "rect");
 
-    paddlerect.setAttributeNS(null, "fill", "white");
+    paddlerect.setAttributeNS(null, "fill", this.color);
+    paddlerect.setAttributeNS(null, "stroke", this.border)
     paddlerect.setAttributeNS(null, "x", this.x);
     paddlerect.setAttributeNS(null, "y", this.y);
     paddlerect.setAttributeNS(null, "width", this.width);

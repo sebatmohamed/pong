@@ -13,19 +13,18 @@ export default class Game {
 
     this.gameElement = document.getElementById(this.element);
 
-    // creates a new instance of board. height and width passed through from Game object
+    // creates a new instance of board
     this.board = new Board(this.width, this.height);
 
     this.paddleWidth = 8;
     this.paddleHeight = 56;
     this.boardGap = 10;
 
-    // create ball
-    this.ball = new Ball(10, this.width, this.height, "#CF5300");
-    this.ball2 = new Ball(10, this.width, this.height, "#CF5300")
+    // creates ball
+    this.ball = new Ball(12, this.width, this.height, "#CF5300");
+    this.ball2 = new Ball(12, this.width, this.height, "#CF5300");
 
-
-    // create player1 paddle
+    // creates player1 paddle
     this.player1 = new Paddle(
       this.height,
       this.paddleWidth,
@@ -33,10 +32,12 @@ export default class Game {
       this.boardGap,
       (this.height - this.paddleHeight) / 2,
       KEYS.a,
-      KEYS.z
+      KEYS.z,
+      "#FFC72C",
+      "#1D428A"
     );
 
-    // create player2 paddle
+    // creates player2 paddle
     this.player2 = new Paddle(
       this.height,
       this.paddleWidth,
@@ -44,7 +45,9 @@ export default class Game {
       this.width - this.boardGap - this.paddleWidth,
       (this.height - this.paddleHeight) / 2,
       KEYS.up,
-      KEYS.down
+      KEYS.down,
+      "white",
+      "#CE1141"
     );
 
     // creates a score label
@@ -103,13 +106,12 @@ export default class Game {
   //     this.newBall = new Ball(10, this.width, this.height, "red")
   //   }, 3000);
 
-
-    // const newBall = setTimeout(newBall, 3000)
-    // if(newBall) {
-    //   this.ball = new Ball(10, this.width, this.height, "red")
-    // } else {
-    //   this.ball = new Ball(10, this.width, this.height, "#CF5300")
-    // }
+  // const newBall = setTimeout(newBall, 3000)
+  // if(newBall) {
+  //   this.ball = new Ball(10, this.width, this.height, "red")
+  // } else {
+  //   this.ball = new Ball(10, this.width, this.height, "#CF5300")
+  // }
 
   render() {
     if (this.gameOn) {
@@ -150,7 +152,7 @@ export default class Game {
     this.player2.render(svg);
 
     this.ball.render(svg, this.player1, this.player2);
-    this.ball2.rener(svg, this.player1, this.player2)
+    this.ball2.render(svg, this.player1, this.player2);
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
   }

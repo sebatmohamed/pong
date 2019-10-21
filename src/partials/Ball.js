@@ -74,7 +74,6 @@ export default class Ball {
     this.reset();
   }
 
-
   render(svg, player1, player2) {
     this.x += this.vx;
     this.y += this.vy;
