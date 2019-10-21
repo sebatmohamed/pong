@@ -13,18 +13,18 @@ export default class Game {
 
     this.gameElement = document.getElementById(this.element);
 
-    // creates a new instance of board
     this.board = new Board(this.width, this.height);
 
     this.paddleWidth = 8;
     this.paddleHeight = 56;
     this.boardGap = 10;
 
-    // creates ball
     this.ball = new Ball(12, this.width, this.height, "#CF5300");
+
+    setTimeout(() => alert("Hello"), 3000);
+
     this.ball2 = new Ball(12, this.width, this.height, "#CF5300");
 
-    // creates player1 paddle
     this.player1 = new Paddle(
       this.height,
       this.paddleWidth,
@@ -37,7 +37,6 @@ export default class Game {
       "#1D428A"
     );
 
-    // creates player2 paddle
     this.player2 = new Paddle(
       this.height,
       this.paddleWidth,
@@ -50,7 +49,6 @@ export default class Game {
       "#CE1141"
     );
 
-    // creates a score label
     this.score1 = new Score(this.width / 2 - 50, 30, 30);
     this.score2 = new Score(this.width / 2 + 25, 30, 30);
 

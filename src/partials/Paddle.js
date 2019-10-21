@@ -7,13 +7,13 @@ export default class Paddle {
     this.height = height;
     this.x = x;
     this.y = y;
-    this.color = color
-    this.border = border
+    this.color = color;
+    this.border = border;
     this.speed = 30;
     this.score = 0;
     this.interval = 15;
-    this.movingUp = null
-    this.movingDown = null
+    this.movingUp = null;
+    this.movingDown = null;
 
     document.addEventListener("keydown", event => {
       console.log(event);
@@ -60,12 +60,12 @@ export default class Paddle {
 
   stopUp() {
     clearInterval(this.movingUp);
-    this.movingUp = null
+    this.movingUp = null;
   }
 
   stopDown() {
     clearInterval(this.movingDown);
-    this.movingDown = null
+    this.movingDown = null;
   }
 
   up() {
@@ -88,7 +88,7 @@ export default class Paddle {
     let paddlerect = document.createElementNS(SVG_NS, "rect");
 
     paddlerect.setAttributeNS(null, "fill", this.color);
-    paddlerect.setAttributeNS(null, "stroke", this.border)
+    paddlerect.setAttributeNS(null, "stroke", this.border);
     paddlerect.setAttributeNS(null, "x", this.x);
     paddlerect.setAttributeNS(null, "y", this.y);
     paddlerect.setAttributeNS(null, "width", this.width);
