@@ -20,10 +20,9 @@ export default class Game {
     this.boardGap = 10;
 
     this.ball = new Ball(12, this.width, this.height, "#CF5300");
-
-    setTimeout(() => alert("Hello"), 3000);
-
-    this.ball2 = new Ball(12, this.width, this.height, "#CF5300");
+    this.ball2 = new Ball(10, this.width, this.height, "#CF5300");
+    this.ball3 = new Ball(9, this.width, this.height, "#CF5300");
+    this.ball4 = new Ball(8, this.width, this.height, "#CF5300");
 
     this.player1 = new Paddle(
       this.height,
@@ -89,28 +88,6 @@ export default class Game {
     startGame.innerText = "PRESS SPACE FOR TIP OFF";
   }
 
-  // newBall() {
-  //   this.newball = new Ball(10, this.width, this.height, "#CF5300");
-  // }
-
-  // newBall() {
-  //   this.newball = setTimeout(() => {
-  //     this.ball();
-  //   }, 3000);
-  // }
-
-  // newBall() {
-  //   setTimeout(function() {
-  //     this.newBall = new Ball(10, this.width, this.height, "red")
-  //   }, 3000);
-
-  // const newBall = setTimeout(newBall, 3000)
-  // if(newBall) {
-  //   this.ball = new Ball(10, this.width, this.height, "red")
-  // } else {
-  //   this.ball = new Ball(10, this.width, this.height, "#CF5300")
-  // }
-
   render() {
     if (this.gameOn) {
       this.player1.speed = 0;
@@ -118,7 +95,7 @@ export default class Game {
       return;
     }
 
-    if (this.player1.score === 10) {
+    if (this.player1.score == 10) {
       document.getElementById("winner");
       winner.innerText = "SUCKER! PLAYER 1 WINS!";
       setTimeout(refresh => {
@@ -127,7 +104,7 @@ export default class Game {
       return;
     }
 
-    if (this.player2.score === 10) {
+    if (this.player2.score == 10) {
       document.getElementById("winner");
       winner.innerText = "SUCKER! PLAYER 2 WINS!";
       setTimeout(refresh => {
@@ -150,8 +127,21 @@ export default class Game {
     this.player2.render(svg);
 
     this.ball.render(svg, this.player1, this.player2);
-    this.ball2.render(svg, this.player1, this.player2);
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
+
+    if (this.player1.score == 8 || this.player2.score == 8) {
+      this.ball2.render(svg, this.player1, this.player2);
+      this.ball3.render(svg, this.player1, this.player2);
+      this.ball4.render(svg, this.player1, this.player2);
+      this.gameOn = false;
+    } else if (this.player1.score == 4 || this.player2.score == 4) {
+      this.ball3.render(svg, this.player1, this.player2);
+      this.ball4.render(svg, this.player1, this.player2);
+      this.gameOn = false;
+    } else if (this.player1.score == 2 || this.player2.score == 2) {
+      this.ball4.render(svg, this.player1, this.player2);
+      this.gameOn = false;
+    }
   }
 }
