@@ -8,6 +8,7 @@ ehthumbs.db
 *[Tt]humbs.db
 *.Trashes
 outline.png
+yarn.lock
 
 # Editor
 .vscode

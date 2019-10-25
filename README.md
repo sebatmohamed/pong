@@ -12,7 +12,7 @@ A starter project for a basic pong game using SVGs and node.js.
 
 1. This project was my first introduction to constructor functions and partials. Constructor functions are a blueprint of your code which enables the developer to create many objects of the same "type, keeping my code organized. I made use of the keyword 'new' to create instances of a new class that already had set properties and parameters. Partials are  separate javascript files that communicate with each other to run my pong game. Here is a representation of what is goin on:
 
-![Javascript partials funneling into constructor property(Game.js)](outline.png)
+[Visual representation of JavaScript partials funneling into constructor property(Game.js)](outline.png)
 
 2. I learned how to create an SVG in JavaScript, translate all its properties by giving it setAttributeNS and using createElementNS to give it shape, and then render it in HTML. 
 
