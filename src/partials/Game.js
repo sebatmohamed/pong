@@ -20,9 +20,8 @@ export default class Game {
     this.boardGap = 10;
 
     this.ball = new Ball(12, this.width, this.height, "#CF5300");
-    this.ball2 = new Ball(10, this.width, this.height, "#CF5300");
-    this.ball3 = new Ball(9, this.width, this.height, "#CF5300");
-    this.ball4 = new Ball(8, this.width, this.height, "#CF5300");
+    this.ball2 = new Ball(8, this.width, this.height, "#CF5300");
+    this.ball3 = new Ball(5, this.width, this.height, "#CF5300");
 
     this.player1 = new Paddle(
       this.height,
@@ -60,14 +59,14 @@ export default class Game {
           this.player2.speed = 10;
           document.getElementById("music").play();
 
+          document.getElementById("game").style.width = "768px";
+          document.getElementById("game").style.height = "384px";
+
           setTimeout(end => {
             document.getElementById("end").innerHTML =
               "GAME OVER! BETTER LUCK NEXT TIME";
             this.gameOn = true;
           }, 77300);
-
-          document.getElementById("game").style.width = "768px";
-          document.getElementById("game").style.height = "384px";
 
           setTimeout(refresh => {
             location.reload(true);
@@ -133,14 +132,9 @@ export default class Game {
     if (this.player1.score == 8 || this.player2.score == 8) {
       this.ball2.render(svg, this.player1, this.player2);
       this.ball3.render(svg, this.player1, this.player2);
-      this.ball4.render(svg, this.player1, this.player2);
       this.gameOn = false;
     } else if (this.player1.score == 4 || this.player2.score == 4) {
       this.ball3.render(svg, this.player1, this.player2);
-      this.ball4.render(svg, this.player1, this.player2);
-      this.gameOn = false;
-    } else if (this.player1.score == 2 || this.player2.score == 2) {
-      this.ball4.render(svg, this.player1, this.player2);
       this.gameOn = false;
     }
   }
