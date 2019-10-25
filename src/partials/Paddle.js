@@ -40,6 +40,14 @@ export default class Paddle {
     });
   }
 
+  up() {
+    this.y = Math.max(0, this.y - this.speed);
+  }
+
+  down() {
+    this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
+  }
+
   startUp() {
     if (this.movingUp === null) {
       this.movingUp = setInterval(() => {
@@ -66,14 +74,6 @@ export default class Paddle {
   stopDown() {
     clearInterval(this.movingDown);
     this.movingDown = null;
-  }
-
-  up() {
-    this.y = Math.max(0, this.y - this.speed);
-  }
-
-  down() {
-    this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
   }
 
   coordinates(x, y, width, height) {
