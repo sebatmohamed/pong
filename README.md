@@ -1,6 +1,6 @@
-# Pong Game Starter
+# Toronto Raptors Pong!
 
-A fun, basketball inspired starter project for a basic pong game using SVGs and JS OOP.
+A fun, basketball inspired basic pong game using SVGs and JS OOP.
 
 ![alt text](https://github.com/sebatmohamed/pong-game/blob/master/ponggame.png)
 
@@ -109,4 +109,15 @@ the additional ball will only appear at that specific score and then will disapp
 
 ## Notes
 
-There is no support for mobile or tablet devices as you need to handle key down and key up events.
+- Please feel free to contribute and clone my project.
+
+- There is no support for mobile or tablet devices as you need to handle key down and key up events.
+
+## Authors
+
+Sebat Mohamed - [sebatmohamed](https://github.com/sebatmohamed)
+Wriitten Oct 2019
+
+## Acknowledgements
+
+[Red Academy](https://github.com/redacademy)
