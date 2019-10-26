@@ -35,12 +35,36 @@ export default class Game {
       "#1D428A"
     );
 
+    this.player1shrink = new Paddle(
+      this.height,
+      this.paddleWidth,
+      this.paddleHeight - 10,
+      this.boardGap,
+      (this.height - (this.paddleHeight - 10)) / 2,
+      KEYS.a,
+      KEYS.z,
+      "#FFC72C",
+      "#1D428A"
+    );
+
     this.player2 = new Paddle(
       this.height,
       this.paddleWidth,
       this.paddleHeight,
       this.width - this.boardGap - this.paddleWidth,
       (this.height - this.paddleHeight) / 2,
+      KEYS.up,
+      KEYS.down,
+      "white",
+      "#CE1141"
+    );
+
+    this.player2shrink = new Paddle(
+      this.height,
+      this.paddleWidth,
+      this.paddleHeight - 10,
+      this.width - this.boardGap - this.paddleWidth,
+      (this.height - (this.paddleHeight - 10)) / 2,
       KEYS.up,
       KEYS.down,
       "white",
@@ -57,6 +81,8 @@ export default class Game {
           this.gameOn = !this.gameOn;
           this.player1.speed = 10;
           this.player2.speed = 10;
+          this.player1shrink.speed = 10;
+          this.player2shrink.speed = 10;
           document.getElementById("music").play();
 
           document.getElementById("game").style.width = "768px";
@@ -91,10 +117,12 @@ export default class Game {
     if (this.gameOn) {
       this.player1.speed = 0;
       this.player2.speed = 0;
+      this.player1shrink.speed = 0;
+      this.player2shrink.speed = 0;
       return;
     }
 
-    if (this.player1.score == 10) {
+    if (this.player1.score == 10 || this.player1shrink.score == 10) {
       document.getElementById("winner");
       winner.innerText = "SUCKER! PLAYER 1 WINS!";
       setTimeout(refresh => {
@@ -103,7 +131,7 @@ export default class Game {
       return;
     }
 
-    if (this.player2.score == 10) {
+    if (this.player2.score == 10 || this.player2shrink.score == 10) {
       document.getElementById("winner");
       winner.innerText = "SUCKER! PLAYER 2 WINS!";
       setTimeout(refresh => {
@@ -122,20 +150,27 @@ export default class Game {
     this.gameElement.appendChild(svg);
 
     this.board.render(svg);
-    this.player1.render(svg);
-    this.player2.render(svg);
 
-    this.ball.render(svg, this.player1, this.player2);
-    this.score1.render(svg, this.player1.score);
-    this.score2.render(svg, this.player2.score);
+    if (this.player1.score < 5) {
+      this.player2.render(svg)
+    } else if (this.player1.score >= 5) {
+      this.player2shrink.render(svg)
+    }
 
-    if (this.player1.score == 8 || this.player2.score == 8) {
-      this.ball2.render(svg, this.player1, this.player2);
+    if (this.player2.score < 5) {
+      this.player1.render(svg)
+    } else if (this.player2.score >= 5) {
+      this.player1shrink.render(svg)
+    }
+
+    this.ball.render(svg, this.player1, this.player2, this.player1shrink, this.player2shrink);
+    this.score1.render(svg, this.player1.score, this.player1shrink.score);
+    this.score2.render(svg, this.player2.score, this.player2shrink.score);
+
+    if (this.player1shrink.score == 7 || this.player2shrink.score == 7) {
+      this.ball2.render(svg, this.player1shrink, this.player2shrink);
+    } else if (this.player1.score == 2 || this.player2.score == 2) {
       this.ball3.render(svg, this.player1, this.player2);
-      this.gameOn = false;
-    } else if (this.player1.score == 4 || this.player2.score == 4) {
-      this.ball3.render(svg, this.player1, this.player2);
-      this.gameOn = false;
     }
   }
 }

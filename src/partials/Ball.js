@@ -29,7 +29,7 @@ export default class Ball {
         player2.x,
         player2.y,
         player2.width,
-        player2.height
+        player2.height,
       );
       let [leftX, rightX, topY, bottomY] = paddle;
       if (
@@ -44,7 +44,7 @@ export default class Ball {
         player1.x,
         player1.y,
         player1.width,
-        player1.height
+        player1.height,
       );
       let [leftX, rightX, topY, bottomY] = paddle;
       if (
@@ -74,12 +74,12 @@ export default class Ball {
     this.reset();
   }
 
-  render(svg, player1, player2) {
+  render(svg, player1, player2, player1shrink, player2shrink ) {
     this.x += this.vx;
     this.y += this.vy;
 
     this.wallCollision();
-    this.paddleCollision(player1, player2);
+    this.paddleCollision(player1, player2, player1shrink, player2shrink);
 
     let circle = document.createElementNS(SVG_NS, "circle");
     circle.setAttributeNS(null, "r", this.radius);

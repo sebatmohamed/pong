@@ -16,7 +16,6 @@ export default class Paddle {
     this.movingDown = null;
 
     document.addEventListener("keydown", event => {
-      console.log(event);
       switch (event.key) {
         case up:
           this.startUp();
@@ -28,7 +27,6 @@ export default class Paddle {
     });
 
     document.addEventListener("keyup", event => {
-      console.log(event);
       switch (event.key) {
         case up:
           this.stopUp();
@@ -53,7 +51,6 @@ export default class Paddle {
       this.movingUp = setInterval(() => {
         this.up();
       }, this.interval);
-      console.log(this.movingUp);
     }
   }
 
@@ -62,7 +59,6 @@ export default class Paddle {
       this.movingDown = setInterval(() => {
         this.down();
       }, this.interval);
-      console.log(this.movingDown);
     }
   }
 
