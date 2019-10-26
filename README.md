@@ -1,8 +1,8 @@
 # Pong Game Starter
 
-A fun, basketball inspired starter project for a basic pong game using SVGs and node.js.
+A fun, basketball inspired starter project for a basic pong game using SVGs and JS OOP.
 
-!(../../pong.png)
+!("https://github.com/sebatmohamed/pong-game/blob/master/ponggame.png")
 
 ## Setup
 
