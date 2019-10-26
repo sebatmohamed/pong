@@ -116,7 +116,8 @@ the additional ball will only appear at that specific score and then will disapp
 ## Authors
 
 Sebat Mohamed - [sebatmohamed](https://github.com/sebatmohamed)
-Wriitten Oct 2019
+
+Written Oct 2019
 
 ## Acknowledgements
 
