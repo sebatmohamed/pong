@@ -2,7 +2,7 @@
 
 A fun, basketball inspired starter project for a basic pong game using SVGs and JS OOP.
 
-!(https://github.com/sebatmohamed/pong-game/blob/master/ponggame.png)
+![alt text](https://github.com/sebatmohamed/pong-game/blob/master/ponggame.png)
 
 ## Setup
 
