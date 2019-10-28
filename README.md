@@ -24,7 +24,7 @@ Read more about the [Parcel web application bundler here](https://parceljs.org/)
 
 #### Technologies Used
 
-- HTML55
+- HTML5
 - CSS3
 - JavaScript
 - SVG
